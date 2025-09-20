@@ -227,7 +227,7 @@ CUETAG=88201..132300|LYRICS|Because a vision softly creeping
 (?P<value>.*)$
 ```
 
-## 10. Security & Robustness Considerations
+## 9. Security & Robustness Considerations
 
 - Very large tag blocks can impact memory; avoid excessive volumes.
 - Consumers **MUST** validate and ignore malformed CUETAGs without affecting playback.
