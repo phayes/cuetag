@@ -119,9 +119,9 @@ Each CUETAG entry is structured as:
 
 ### Introduction
 
-The `CUETAG_ORIGIN` allows sample-accurate portability across different audio formats and processing pipelines. When audio files undergo transcoding, resampling, or editing operations, the absolute sample positions of cues can become invalid or misaligned. `CUETAG_ORIGIN` preserved the original authoring context, enabling software to automatically remap cue positions.
+`CUETAG_ORIGIN` allows sample-accurate portability across different audio formats and processing pipelines. When audio files undergo transcoding, resampling, or editing operations, the absolute sample positions of cues can become invalid or misaligned. `CUETAG_ORIGIN` preserved the original authoring context, enabling software to automatically remap cue positions.
 
-Consider a DJ's loop points marked at samples 88200-176400 in a 44.1 kHz file. When transcoded to 48 kHz, these samples would naively become invalid. However, with `CUETAG_ORIGIN=sr=44100; len=1940400;`, transcoding software can precisely calculate the new positions (96000-192000) that maintain the exact same temporal boundaries. This ensures that beat-matched loops, vocal cues, and other timing-critical markers remain sample-accurate across format conversions.
+Consider a DJ's loop points marked at samples 88200-176400 in a 44.1 kHz file. When transcoded to 48 kHz, these samples would naively become invalid. However, with `CUETAG_ORIGIN=sr=44100; len=1940400;`, consuming software can precisely calculate the new positions (96000-192000) that maintain the exact same temporal boundaries. This ensures that beat-matched loops, vocal cues, and other timing-critical markers remain sample-accurate across format conversions.
 
 ### Purpose
 
