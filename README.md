@@ -34,14 +34,14 @@ CUETAG=176400..220500|COMMENT|Loop this section
 
 ```
 CUETAG=0..88200|BPM|120
-CUETAG=88200..176400|BPM|128
+CUETAG=88201..176400|BPM|128
 ```
 
 **For players (lyrics display):**
 
 ```
 CUETAG=0..44100|LYRICS|Hello darkness, my old friend
-CUETAG=44100..88200|LYRICS|I've come to talk with you again
+CUETAG=44101..88200|LYRICS|I've come to talk with you again
 ```
 
 **For ensembles (performer markers):**
@@ -157,24 +157,24 @@ Example:\
 
 ```
 CUETAG=0..132300|KEY|G
-CUETAG=132300..264600|KETY|Em
-CUETAG=264600..396900|KETY|G
+CUETAG=132301..264600|KETY|Em
+CUETAG=264601..396900|KETY|G
 ```
 
 **Classical movements + performers:**
 
 ```
 CUETAG=0..132300|MOVEMENT|I. Allegro con brio
-CUETAG=132300..264600|MOVEMENT|II. Andante con moto
-CUETAG=220500..330750|PERFORMER|Anne-Sophie Mutter
+CUETAG=132301..264600|MOVEMENT|II. Andante con moto
+CUETAG=220501..330750|PERFORMER|Anne-Sophie Mutter
 ```
 
 **Audiobook chapters:**
 
 ```
 CUETAG=0..441000|TITLE|An Unexpected Party
-CUETAG=441000..882000|TITLE|Roast Mutton
-CUETAG=882000..1323000|TITLE|A Short Rest
+CUETAG=441001..882000|TITLE|Roast Mutton
+CUETAG=882001..1323000|TITLE|A Short Rest
 ```
 
 **Production notes (custom kinds):**
@@ -188,16 +188,16 @@ CUETAG=176400..264600|FX|Tape echo engaged
 
 ```
 CUETAG=0..88200|BPM|120
-CUETAG=88200..176400|BPM|128
-CUETAG=176400..264600|BPM|135
+CUETAG=88201..176400|BPM|128
+CUETAG=176401..264600|BPM|135
 ```
 
 **Lyrics segments:**
 
 ```
 CUETAG=0..44100|LYRICS|Hello darkness, my old friend
-CUETAG=44100..88200|LYRICS|I've come to talk with you again
-CUETAG=88200..132300|LYRICS|Because a vision softly creeping
+CUETAG=44101..88200|LYRICS|I've come to talk with you again
+CUETAG=88201..132300|LYRICS|Because a vision softly creeping
 ```
 
 ## 8. Parsing Algorithm (Non-Normative)
