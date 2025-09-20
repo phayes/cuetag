@@ -15,7 +15,7 @@ CUETAG=<sample_spec>|<kind>|<value>
   Use established tag names when they fit, or define your own.
 - `<value>` is the payload of the cue tag. It can be arbitrary data, restricted only by the underlying format (e.g., Vorbis Comments require Unicode text, ID3 `TXXX` requires text encoding, etc.).
 
-The first part of the tag (`<sample_spec>|<kind>|`) **MUST** be ASCII so that it can be parsed reliably as raw bytes, ASCII, or UTF-8. The `<value>` portion follows and may use the broader capabilities of the host metadata format.
+CUETAG also defines the `CUETAG_ORIGIN` tag (e.g. `CUETAG_ORIGIN=sr=44100; len=12345678;`), which provides information to allow cue tags to be recovered after a transcode. 
 
 CUETAG is container-agnostic, order-insensitive, and complements existing file-level tags by adding **when** those tags apply within a track.
 
