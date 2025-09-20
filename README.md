@@ -92,7 +92,7 @@ Each CUETAG entry is structured as:
 - **MUSTs/SHOULDs:**
   - Values **MUST** be base-10 digits only (`0–9`), length 1–20.
   - **MUST** be representable within the host format’s valid sample index range.
-  - Consumers **MAY** normalize internally: (eg Point `N` → interval `[N, N]`)
+  - Consumers **MAY** normalize internally: (e.g. Point `N` → interval `[N, N]`)
 
 ### 3.3 `<kind>`
 
@@ -109,7 +109,7 @@ Each CUETAG entry is structured as:
   - ID3 `TXXX`: must be valid text using the declared frame encoding.
   - MP4 freeform atoms: may use UTF-8 text or binary-safe payloads.
   - APEv2: arbitrary UTF-8 text.
-- `<value>` **MAY** be empty. If <value> is empty, CUETAG does not prescribe semantics; interpretation is application-specific (e.g., marker with no payload).
+- `<value>` **MAY** be empty. If `<value>` is empty, CUETAG does not prescribe semantics; interpretation is application-specific (e.g., marker with no payload).
 - `<value>` **MAY** contain arbitrary data supported by the format.
 
 ## 4. Semantics
