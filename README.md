@@ -109,7 +109,7 @@ Each CUETAG entry is structured as:
   - ID3 `TXXX`: must be valid text using the declared frame encoding.
   - MP4 freeform atoms: may use UTF-8 text or binary-safe payloads.
   - APEv2: arbitrary UTF-8 text.
-- `<value>` **MAY** be empty. If <value> is empty, the cue’s semantics are application-defined (e.g., a marker with no payload). 
+- `<value>` **MAY** be empty. If <value> is empty, CUETAG does not prescribe semantics; interpretation is application-specific (e.g., marker with no payload).
 - `<value>` **MAY** contain arbitrary data supported by the format.
 
 ## 4. Semantics
@@ -231,4 +231,5 @@ CUETAG=88201..132300|LYRICS|Because a vision softly creeping
 
 - Very large tag blocks can impact memory; avoid excessive volumes.
 - Consumers **MUST** validate and ignore malformed CUETAGs without affecting playback.
+- Consumers **SHOULD** reject sample indices that fall outside the media’s actual length to prevent out-of-bounds interpretations.
 
