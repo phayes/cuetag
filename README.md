@@ -64,7 +64,7 @@ CUETAG=264600..396900|PERFORMER|Drums – Questlove
 
 ## 2. Field Name
 
-- Implementations **MUST** use the tag/atom/frame name \`\` for each cue entry.
+- Implementations **MUST** use the tag/atom/frame name `CUETAG` for each cue entry.
 - Tag systems that separate a key and a freeform description (e.g., ID3 `TXXX`) **MUST** set the description/key to `CUETAG`.
 
 ## 3. Value Syntax
@@ -80,6 +80,8 @@ Each CUETAG entry is structured as:
 - The first two `|` **MUST** be treated as structural delimiters.
 - `<sample_spec>|<kind>|` **MUST** be encoded in ASCII.
 - `<value>` may be any arbitrary data permitted by the host tag format (e.g., UTF-8 strings for Vorbis, UTF-16/UTF-8 text for ID3, binary-safe text in MP4 freeform atoms, etc.).
+- `<value>` may contain additional `|` characters, so when parsing consumers **MUST** only process the first two `|` characters. 
+- When parsing non-text binary representations, `<sample_spec>|<kind>|` remains the same, so consumers **MUST** split on the first two `0x7C` bytes (`|` character) and interpret `<sample_spec>` and `<kind>` as ASCII bytes. 
 
 ### 3.2 `<sample_spec>`
 
@@ -104,7 +106,7 @@ Each CUETAG entry is structured as:
 ### 3.4 `<value>`
 
 - The `<value>` portion is format-dependent:
-  - Vorbis Comments: must be valid Unicode text.
+  - Vorbis Comments: must be valid UTF-8 text.
   - ID3 `TXXX`: must be valid text using the declared frame encoding.
   - MP4 freeform atoms: may use UTF-8 text or binary-safe payloads.
   - APEv2: arbitrary UTF-8 text.
