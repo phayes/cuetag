@@ -109,7 +109,7 @@ Each CUETAG entry is structured as:
   - ID3 `TXXX`: must be valid text using the declared frame encoding.
   - MP4 freeform atoms: may use UTF-8 text or binary-safe payloads.
   - APEv2: arbitrary UTF-8 text.
-- `<value>` **MAY** be empty.
+- `<value>` **MAY** be empty. If <value> is empty, the cue’s semantics are application-defined (e.g., a marker with no payload). 
 - `<value>` **MAY** contain arbitrary data supported by the format.
 
 ## 4. Semantics
@@ -118,6 +118,7 @@ Each CUETAG entry is structured as:
 - Consumers **MUST** map to seconds as `t = sample_index / sample_rate`.
 - Multiple CUETAG entries **MAY** exist.
 - Order not guaranteed; consumers **SHOULD** sort by `(START, END)`.
+- CUETAG does not prescribe behavior for overlapping ranges. Applications are free to interpret overlaps as appropriate for their domain (e.g., multiple active performers, layered annotations).
 
 ## 5. Validation & Error Handling
 
