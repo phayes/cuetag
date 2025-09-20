@@ -418,3 +418,44 @@ CUETAG=88201..132300|LYRICS|Because a vision softly creeping
 - Consumers **MUST** validate and ignore malformed CUETAGs.
 - Consumers **MUST** reject sample indices outside media length to prevent buffer overruns in dependent software implementations. 
 
+# 11. Recommended Kinds Registry (Non-Normative)
+
+CUETAG does not impose a closed vocabulary for `<kind>`, but to promote interoperability and avoid fragmentation, implementations **SHOULD** re-use existing well-known tag names where they make sense, before defining custom ones.  
+
+This section provides a seed set of **recommended kinds**.
+
+---
+
+## 11.1 Reuse of Established Tags
+These align with widely recognized metadata fields (Vorbis, ID3, MusicBrainz, etc.):
+
+- `ARTIST` — performer/artist active during the cue interval.  
+- `TITLE` — title of section, movement, or chapter.  
+- `ALBUM` — album-level subdivision (rare but possible in long-form works).  
+- `MOVEMENT` — classical movement names or labels.  
+- `LYRICS` — lyric line/phrase active during the cue.  
+- `KEY` — musical key (e.g., `Am`, `G#`, `Cmaj7`).  
+- `BPM` — beats per minute (tempo marking).  
+- `GENRE` — stylistic subdivision if it changes within a track.  
+
+---
+
+## 11.2 Cue-Specific Concepts
+These are not typically found in file-level tags but are useful at the **time-anchored** level:
+
+- `CUE` — numbered cue point marker (e.g., `1`, `2`, `A`, `DROP`).  
+- `LOOP` — identifier for loop region (e.g., `1`, `CHORUS`).  
+- `COMMENT` — user annotations, free text notes.  
+- `PERFORMER` — per-section performer information (soloist, ensemble change).  
+- `TAKE` — production note identifying recording take.  
+- `FX` — effect on/off markers (e.g., reverb, delay).  
+- `SECTION` — arbitrary structural section label (e.g., `VERSE`, `CHORUS`, `DROP`).  
+
+---
+
+## 11.3 Guidance for New Kinds
+- Keep names short (`≤16` chars), uppercase, and stable.  
+- Avoid synonyms (`LOOP` vs. `LOOPPOINT`). Prefer existing ones if they fit.  
+- For experimental/custom uses, consider prefixing with a vendor or tool identifier (e.g., `DJX_FADEIN`).  
+
+
