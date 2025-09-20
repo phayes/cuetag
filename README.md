@@ -92,8 +92,7 @@ Each CUETAG entry is structured as:
 - **MUSTs/SHOULDs:**
   - Values **MUST** be base-10 digits only (`0–9`), length 1–20.
   - **MUST** be representable within the host format’s valid sample index range.
-  - Consumers **MAY** normalize internally:
-    - Point `N` → interval `[N, N]` or `(N, N+1)` if needed.
+  - Consumers **MAY** normalize internally: (eg Point `N` → interval `[N, N]`)
 
 ### 3.3 `<kind>`
 
