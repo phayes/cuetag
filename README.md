@@ -1,5 +1,9 @@
 # CUETAG: Time-Anchored Metadata for Audio
 
+Version: 0.1-draft
+Author: Patrick Hayes - patrick.d.hayes@gmail.com
+Date: 2025
+
 *A lightweight scheme for embedding ****sample-accurate**** cues in existing tag systems.*
 
 ## High-Level Overview
@@ -353,18 +357,20 @@ CUETAG=44101..88200|LYRICS|I've come to talk with you again
 CUETAG=88201..132300|LYRICS|Because a vision softly creeping
 ```
 
-## 9. Parsing Algorithm (Non-Normative)
+## 9. Parsing Algorithms (Non-Normative)
 
-1. Split at first two `|` → `spec`, `kind`, `value`.
-2. Parse `spec`:
+### 9.1 CUETAG Parsing
+
+1. **Split structure**: Split at first two `|` → `spec`, `kind`, `value`.
+2. **Parse sample specification**:
    - `^\d+$` → point `N`.
    - `^(\d+)..(\d+)$` → range `[START, END]`.
-3. Validate: ensure `START ≤ END`.
-4. Validate `kind`.
-5. `<value>` is opaque; only format-level validation.
-6. Normalize internally if desired.
+3. **Validate range**: ensure `START ≤ END`.
+4. **Validate kind**: match `^[A-Z0-9_]+$` (case-insensitive, emit uppercase).
+5. **Value handling**: `<value>` is opaque; only format-level validation applies.
+6. **Normalize internally**: optionally convert points to ranges `[N..N]` for uniform processing.
 
-**Regex:**
+**CUETAG Regex:**
 
 ```regex
 ^(?:
@@ -377,6 +383,29 @@ CUETAG=88201..132300|LYRICS|Because a vision softly creeping
 \|
 (?P<value>.*)$
 ```
+
+### 9.2 CUETAG_ORIGIN Parsing
+
+1. **Split key-value pairs**: Split on `;` to get individual assignments.
+2. **Parse each assignment**: Split on `=` → `key`, `value`.
+3. **Trim whitespace**: Remove optional spaces around `=` and `;`.
+4. **Validate keys**: ensure lowercase ASCII `[a-z][a-z0-9_]*`.
+5. **Required keys**: verify presence of `sr` (sample rate) and `len` (length).
+6. **Parse values**: 
+   - `sr`: positive integer (Hz)
+   - `len`: positive integer (total samples)
+   - Unknown `ext_*` keys: preserve verbatim
+7. **Validation**: reject if required keys missing or malformed.
+
+**CUETAG_ORIGIN Regex:**
+
+```regex
+^(?:\s*(?P<key>[a-z][a-z0-9_]*)\s*=\s*(?P<value>[^;]*?)\s*;\s*)+$
+```
+
+**Example parsing**:
+- Input: `sr=44100; len=1940400; ext_tool=audacity;`
+- Output: `{sr: 44100, len: 1940400, ext_tool: "audacity"}`
 
 ## 10. Security & Robustness Considerations
 
