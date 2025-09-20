@@ -139,7 +139,7 @@ CUETAG=<sample_spec>|<kind>|<value>
 
 ### 6.2 ID3 (MP3/AAC)
 
-- Use \`\` frames with description `CUETAG`; frame text = CUETAG string.
+- Use `TXXX` frames with description `CUETAG`; frame text = CUETAG string.
 
 Example:\
 `TXXX (desc="CUETAG"): 88200..176400|ARTIST|John Coltrane (tenor sax solo)`
