@@ -1,10 +1,12 @@
 # CUETAG: Time-Anchored Metadata for Audio
 
-Version: 0.1-draft
-Author: Patrick Hayes - patrick.d.hayes@gmail.com
-Date: 2025
-
 *A lightweight scheme for embedding ****sample-accurate**** cues in existing tag systems.*
+
+Version: 0.1-draft
+
+Author: Patrick Hayes - patrick.d.hayes@gmail.com
+
+Date: 2025
 
 ## High-Level Overview
 
