@@ -369,8 +369,12 @@ CUETAG=88201..132300|LYRICS|Because a vision softly creeping
    - `^(\d+)..(\d+)$` → range `[START, END]`.
 3. **Validate range**: ensure `START ≤ END`.
 4. **Validate kind**: match `^[A-Z0-9_]+$` (case-insensitive, emit uppercase).
-5. **Value handling**: `<value>` is opaque; only format-level validation applies.
-6. **Normalize internally**: optionally convert points to ranges `[N..N]` for uniform processing.
+5. **Validate bounds**: ensure all sample indices are within `[0, stream_length-1]`:
+   - For points: `0 ≤ N < stream_length`
+   - For ranges: `0 ≤ START ≤ END < stream_length`
+   - **MUST** reject cues with out-of-bounds indices to prevent buffer overruns.
+6. **Value handling**: `<value>` is opaque; only format-level validation applies.
+7. **Normalize internally**: optionally convert points to ranges `[N..N]` for uniform processing.
 
 **CUETAG Regex:**
 
@@ -397,7 +401,6 @@ CUETAG=88201..132300|LYRICS|Because a vision softly creeping
    - `sr`: positive integer (Hz)
    - `len`: positive integer (total samples)
    - Unknown `ext_*` keys: preserve verbatim
-7. **Validation**: reject if required keys missing or malformed.
 
 **CUETAG_ORIGIN Regex:**
 
